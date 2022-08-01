@@ -1,15 +1,11 @@
 package org.accountservice.logger;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Component;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -68,9 +64,8 @@ public class AccountServiceLogger {
         getCount.set(0);
         addRPM.clear();
         getRPM.clear();
-        FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter("src/main/resources/log/log.txt");
+            FileWriter fileWriter = new FileWriter("src/main/resources/log/log.txt");
             fileWriter.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -97,16 +92,16 @@ public class AccountServiceLogger {
      */
     private String logMessage() {
         StringBuilder message = new StringBuilder()
-                .append("Add requests:" + addCount).append("\n")
-                .append("Get requests:" + getCount).append("\n")
-                .append("All requests:" + (getCount.intValue() + addCount.intValue())).append("\n")
+                .append("Add requests:").append(addCount).append("\n")
+                .append("Get requests:").append(getCount).append("\n")
+                .append("All requests:").append(getCount.intValue() + addCount.intValue()).append("\n")
                 .append("\n").append("Add RPM:");
         for (var entry : addRPM.entrySet()) {
-            message.append(entry.getKey() + " ").append(entry.getValue().intValue() + " ").append("\n");
+            message.append(entry.getKey()).append(entry.getValue().intValue()).append("\n");
         }
         message.append("\n").append("Get RPM:");
         for (var entry : getRPM.entrySet()) {
-            message.append(entry.getKey() + " ").append(entry.getValue().intValue() + " ").append("\n");
+            message.append(entry.getKey()).append(entry.getValue().intValue()).append("\n");
         }
         return message.toString();
     }

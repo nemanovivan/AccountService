@@ -3,7 +3,6 @@ package org.accountservice.controller;
 import org.accountservice.logger.AccountServiceLogger;
 import org.accountservice.service.AccountService;
 import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 /**

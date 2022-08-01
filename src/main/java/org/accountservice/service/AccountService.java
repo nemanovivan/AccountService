@@ -1,6 +1,5 @@
 package org.accountservice.service;
 
-import java.util.Optional;
 
 /**
  * Account service
